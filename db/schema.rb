@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2022_06_01_002356) do
+ActiveRecord::Schema.define(version: 2022_06_01_054137) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -29,8 +29,8 @@ ActiveRecord::Schema.define(version: 2022_06_01_002356) do
     t.bigint "tea_id"
     t.string "title"
     t.float "price"
-    t.string "status"
-    t.string "frequency"
+    t.integer "status"
+    t.integer "frequency"
     t.index ["customer_id"], name: "index_subscriptions_on_customer_id"
     t.index ["tea_id"], name: "index_subscriptions_on_tea_id"
   end

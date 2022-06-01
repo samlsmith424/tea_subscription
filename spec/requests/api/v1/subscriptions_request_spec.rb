@@ -9,8 +9,8 @@ RSpec.describe 'subscription request' do
       tea_id: tea.id,
       title: tea.title,
       price: 6.90,
-      status: 'active',
-      frequency: 'annually'
+      status: :active,
+      frequency: :annually
     }
 
     headers = {"CONTENT_TYPE" => "application/json"}
