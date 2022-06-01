@@ -8,6 +8,15 @@ class Api::V1::SubscriptionsController < ApplicationController
     end
   end
 
+  def update
+    subscription = Subscription.find(params[:id])
+    if subscription.update(subscription_params)
+      render json: SubscriptionSerializer.new(subscription), status: :ok
+    else
+      render json: { error: "unable to cancel subscription" }, status: :bad_request
+    end
+  end
+
   private
   def subscription_params
     params.permit(:customer_id, :tea_id, :title, :price, :status, :frequency)
