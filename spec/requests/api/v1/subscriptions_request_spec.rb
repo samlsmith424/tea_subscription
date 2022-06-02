@@ -5,8 +5,7 @@ RSpec.describe 'subscription request' do
   let(:tea) { create(:tea) }
 
   it 'can add a customer to a tea subscription' do
-    params = {
-      customer_id: customer.id,
+    body = {
       tea_id: tea.id,
       title: tea.title,
       price: 6.90,
@@ -14,9 +13,8 @@ RSpec.describe 'subscription request' do
       frequency: :annually
     }
 
-    headers = {"CONTENT_TYPE" => "application/json"}
+    post api_v1_customer_subscriptions_path(customer), params: body
 
-    post api_v1_subscriptions_path, headers: headers, params: params.to_json
     subscription = JSON.parse(response.body, symbolize_names: true)
 
     expect(response).to be_successful
@@ -26,7 +24,7 @@ RSpec.describe 'subscription request' do
   end
 
   it 'does not create a subscription if fields are not properly filled' do
-    params = {
+    body = {
       customer_id: customer.id,
       tea_id: tea.id,
       title: tea.title,
@@ -35,9 +33,7 @@ RSpec.describe 'subscription request' do
       frequency: :annually
     }
 
-    headers = {"CONTENT_TYPE" => "application/json"}
-
-    post api_v1_subscriptions_path, headers: headers, params: params.to_json
+    post api_v1_customer_subscriptions_path(customer), params: body.to_json
 
     expect(response).to have_http_status(400)
     expect(JSON.parse(response.body)["error"]).to eq("unable to create subscription")
@@ -54,7 +50,7 @@ RSpec.describe 'subscription request' do
     )
     expect(subscription.status).to eq('active')
 
-    patch api_v1_subscription_path(subscription), params: { status: 'canceled' }
+    patch api_v1_customer_subscription_path(customer, subscription), params: { status: 'canceled' }
     subscription = JSON.parse(response.body, symbolize_names: true)
 
     expect(response).to be_successful
