@@ -159,7 +159,7 @@ This app creates an API for a tea subscription service.
         }
     }
 }
-
+```
 #### Request
 `POST /api/v1/customers`
 ##### Request Body
