@@ -19,4 +19,19 @@ RSpec.describe 'create customer request' do
     expect(customer).to be_a(Hash)
     expect(customer).to have_key(:data)
   end
+
+  it 'returns an error if all input values are not present' do
+    body = {
+      first_name: "Britney",
+      last_name: "Spears",
+      email: "email@email.com"
+    }
+
+    post api_v1_customers_path, params: body
+
+
+    expect(response).to_not be_successful
+    expect(response.status).to eq(400)
+    expect(JSON.parse(response.body)["error"]).to eq("unable to create customer")
+  end
 end
