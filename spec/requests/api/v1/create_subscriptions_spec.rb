@@ -21,6 +21,26 @@ RSpec.describe 'subscription request' do
     expect(response).to have_http_status(201)
     expect(subscription).to be_a(Hash)
     expect(subscription).to have_key(:data)
+    expect(subscription[:data]).to have_key(:id)
+    expect(subscription[:data][:id]).to be_a(String)
+
+    expect(subscription[:data]).to have_key(:type)
+    expect(subscription[:data][:type]).to eq("subscription")
+
+    expect(subscription[:data]).to have_key(:attributes)
+    expect(subscription[:data][:attributes]).to be_a(Hash)
+
+    expect(subscription[:data][:attributes]).to have_key(:title)
+    expect(subscription[:data][:attributes][:title]).to be_a(String)
+
+    expect(subscription[:data][:attributes]).to have_key(:price)
+    expect(subscription[:data][:attributes][:price]).to be_a(Float)
+
+    expect(subscription[:data][:attributes]).to have_key(:status)
+    expect(subscription[:data][:attributes][:status]).to be_a(String)
+
+    expect(subscription[:data][:attributes]).to have_key(:frequency)
+    expect(subscription[:data][:attributes][:frequency]).to be_a(String)
   end
 
   it 'does not create a subscription if fields are not properly filled' do
