@@ -1,25 +1,136 @@
-# README
+# Tea Subscription
+![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+#### Overview
+This app creates an API for a tea subscription service. 
 
-Things you may want to cover:
+#### Database
+![tea_subscription_db](https://user-images.githubusercontent.com/84606723/171562606-a4569eb4-55b5-4686-b7ca-079100fbf80c.png)
 
-* Ruby version
+#### Framework
+<p>
+  <img src="https://img.shields.io/badge/Ruby%20On%20Rails-b81818.svg?&style=flat&logo=rubyonrails&logoColor=white" />
+</p>
 
-* System dependencies
+#### Languages
+<p>
+  <img src="https://img.shields.io/badge/Ruby-CC0000.svg?&style=flaste&logo=ruby&logoColor=white" />
+  <img src="https://img.shields.io/badge/ActiveRecord-CC0000.svg?&style=flaste&logo=rubyonrails&logoColor=white" />
+</p>
 
-* Configuration
+#### Tools
+<p>
+  <img src="https://img.shields.io/badge/Atom-66595C.svg?&style=flaste&logo=atom&logoColor=white" />  
+  <img src="https://img.shields.io/badge/Git-F05032.svg?&style=flaste&logo=git&logoColor=white" />
+  <img src="https://img.shields.io/badge/GitHub-181717.svg?&style=flaste&logo=github&logoColor=white" />
+  </br>
+  <img src="https://img.shields.io/badge/Postman-FF6E4F.svg?&style=flat&logo=postman&logoColor=white" />
+  <img src="https://img.shields.io/badge/PostgreSQL-4169E1.svg?&style=flaste&logo=postgresql&logoColor=white" />
+</p>
 
-* Database creation
+#### Gems
+<p>
+  <img src="https://img.shields.io/badge/rspec--rails-b81818.svg?&style=flaste&logo=rubygems&logoColor=white" />
+  <img src="https://img.shields.io/badge/pry-b81818.svg?&style=flaste&logo=rubygems&logoColor=white" />  
+  <img src="https://img.shields.io/badge/simplecov-b81818.svg?&style=flaste&logo=rubygems&logoColor=white" />  
+</p>
 
-* Database initialization
+#### Development Principles
+<p>
+  <img src="https://img.shields.io/badge/OOP-b81818.svg?&style=flaste&logo=OOP&logoColor=white" />
+  <img src="https://img.shields.io/badge/TDD-b87818.svg?&style=flaste&logo=TDD&logoColor=white" />
+  <img src="https://img.shields.io/badge/MVC-b8b018.svg?&style=flaste&logo=MVC&logoColor=white" />
+  <img src="https://img.shields.io/badge/REST-33b818.svg?&style=flaste&logo=REST&logoColor=white" />  
+</p>
 
-* How to run the test suite
+## Endpoints
 
-* Services (job queues, cache servers, search engines, etc.)
+#### Request
+`POST api/v1/customers/:customer_id/subscriptions`
+##### Request Body
+```
+    {
+      "customer_id": 1,
+      "tea_id": 1,
+      "title": "tea.title",
+      "price": 6.9,
+      "status": "active",
+      "frequency": "annually"
+    }
+```
+#### Response
+```
+{
+    "data": {
+        "id": "4",
+        "type": "subscription",
+        "attributes": {
+            "customer_id": 1,
+            "tea_id": 1,
+            "title": "tea.title",
+            "price": 6.9,
+            "status": "active",
+            "frequency": "annually"
+        }
+    }
+}
+```
 
-* Deployment instructions
-
-* ...
-# tea_subscription
+#### Request
+`PATCH customers/:customer_id/subscriptions/:subscription_id`
+##### Request Body
+```
+   { 
+   "status": "canceled" 
+   }
+```
+#### Response
+```
+{
+    "data": {
+        "id": "4",
+        "type": "subscription",
+        "attributes": {
+            "customer_id": 1,
+            "tea_id": 1,
+            "title": "tea.title",
+            "price": 6.9,
+            "status": "canceled",
+            "frequency": "annually"
+        }
+    }
+}
+```
+#### Request
+`GET customers/:customer_id/subscriptions`
+#### Response
+```
+{
+    "data": [
+        {
+            "id": "1",
+            "type": "subscription",
+            "attributes": {
+                "customer_id": 1,
+                "tea_id": 1,
+                "title": "My Dongding Subscription",
+                "price": 5.75,
+                "status": "active",
+                "frequency": "monthly"
+            }
+        },
+        {
+            "id": "2",
+            "type": "subscription",
+            "attributes": {
+                "customer_id": 1,
+                "tea_id": 2,
+                "title": "My Shincha Subscription",
+                "price": 6.9,
+                "status": "canceled",
+                "frequency": "annually"
+            }
+        }
+    ]
+}
+```
