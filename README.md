@@ -46,7 +46,7 @@ This app creates an API for a tea subscription service.
 ## Endpoints
 
 #### Request
-`POST api/v1/customers/:customer_id/subscriptions`
+`POST /api/v1/customers/:customer_id/subscriptions`
 ##### Request Body
 ```
     {
@@ -77,7 +77,7 @@ This app creates an API for a tea subscription service.
 ```
 
 #### Request
-`PATCH customers/:customer_id/subscriptions/:subscription_id`
+`PATCH /api/v1/customers/:customer_id/subscriptions/:subscription_id`
 ##### Request Body
 ```
    { 
@@ -102,7 +102,7 @@ This app creates an API for a tea subscription service.
 }
 ```
 #### Request
-`GET customers/:customer_id/subscriptions`
+`GET /api/v1/customers/:customer_id/subscriptions`
 #### Response
 ```
 {
@@ -132,5 +132,31 @@ This app creates an API for a tea subscription service.
             }
         }
     ]
+}
+```
+#### Request
+`POST /api/v1/teas`
+##### Request Body
+```
+   {
+      "title": "Really good tea",
+      "description": "Actually it is really good",
+      "temperature": 200,
+      "brew_time": 4
+    }
+```
+#### Response
+```
+{
+    "data": {
+        "id": "4",
+        "type": "tea",
+        "attributes": {
+            "title": "Really good tea",
+            "description": "Actually it is really good",
+            "temperature": 200,
+            "brew_time": 4
+        }
+    }
 }
 ```
