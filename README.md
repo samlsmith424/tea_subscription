@@ -159,4 +159,30 @@ This app creates an API for a tea subscription service.
         }
     }
 }
+
+#### Request
+`POST /api/v1/customers`
+##### Request Body
+```
+   {
+      "first_name": "Britney",
+      "last_name": "Spears",
+      "email": "email@someemail.com",
+      "address": "Somewhere in Los Angeles"
+    }
+```
+#### Response
+```
+{
+   "data": {
+        "id": "4",
+        "type": "customer",
+        "attributes": {
+            "first_name": "Britney",
+            "last_name": "Spears",
+            "email": "email@someemail.com",
+            "address": "Somewhere in Los Angeles"
+        }
+    }
+}
 ```
