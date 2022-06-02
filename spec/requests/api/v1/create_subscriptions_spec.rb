@@ -38,6 +38,4 @@ RSpec.describe 'subscription request' do
     expect(response).to have_http_status(400)
     expect(JSON.parse(response.body)["error"]).to eq("unable to create subscription")
   end
-
-
 end
