@@ -19,4 +19,18 @@ RSpec.describe 'create tea request' do
     expect(tea).to be_a(Hash)
     expect(tea).to have_key(:data)
   end
+
+  it 'returns an error if all input values are not present' do
+    body = {
+      description: "Actually it is really good",
+      temperature: 200,
+      brew_time: 4
+    }
+
+    post api_v1_teas_path, params: body
+
+    expect(response).to_not be_successful
+    expect(response.status).to eq(400)
+    expect(JSON.parse(response.body)["error"]).to eq("unable to create tea")
+  end
 end
