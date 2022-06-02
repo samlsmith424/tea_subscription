@@ -18,6 +18,26 @@ RSpec.describe 'create customer request' do
     expect(response).to have_http_status(201)
     expect(customer).to be_a(Hash)
     expect(customer).to have_key(:data)
+    expect(customer[:data]).to have_key(:id)
+    expect(customer[:data][:id]).to be_a(String)
+
+    expect(customer[:data]).to have_key(:type)
+    expect(customer[:data][:type]).to eq("customer")
+
+    expect(customer[:data]).to have_key(:attributes)
+    expect(customer[:data][:attributes]).to be_a(Hash)
+
+    expect(customer[:data][:attributes]).to have_key(:first_name)
+    expect(customer[:data][:attributes][:first_name]).to be_a(String)
+
+    expect(customer[:data][:attributes]).to have_key(:last_name)
+    expect(customer[:data][:attributes][:last_name]).to be_a(String)
+
+    expect(customer[:data][:attributes]).to have_key(:email)
+    expect(customer[:data][:attributes][:email]).to be_a(String)
+
+    expect(customer[:data][:attributes]).to have_key(:address)
+    expect(customer[:data][:attributes][:address]).to be_a(String)
   end
 
   it 'returns an error if all input values are not present' do
