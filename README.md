@@ -7,6 +7,11 @@ This app creates an API for a tea subscription service.
 #### Database
 ![tea_subscription_db](https://user-images.githubusercontent.com/84606723/171562606-a4569eb4-55b5-4686-b7ca-079100fbf80c.png)
 
+#### Set Up
+`bundle install` <br>
+`rails db:{create,migrate,seed}` <br>
+`bundle exec rspec`
+
 #### Framework
 <p>
   <img src="https://img.shields.io/badge/Ruby%20On%20Rails-b81818.svg?&style=flat&logo=rubyonrails&logoColor=white" />
