@@ -53,7 +53,7 @@ This app creates an API for a tea subscription service.
 #### Request
 `POST /api/v1/customers/:customer_id/subscriptions`
 ##### Request Body
-```
+```json
     {
       "customer_id": 1,
       "tea_id": 1,
@@ -64,7 +64,7 @@ This app creates an API for a tea subscription service.
     }
 ```
 #### Response
-```
+```json
 {
     "data": {
         "id": "4",
@@ -84,13 +84,13 @@ This app creates an API for a tea subscription service.
 #### Request
 `PATCH /api/v1/customers/:customer_id/subscriptions/:subscription_id`
 ##### Request Body
-```
+```json
    { 
    "status": "canceled" 
    }
 ```
 #### Response
-```
+```json
 {
     "data": {
         "id": "4",
@@ -109,7 +109,7 @@ This app creates an API for a tea subscription service.
 #### Request
 `GET /api/v1/customers/:customer_id/subscriptions`
 #### Response
-```
+```json
 {
     "data": [
         {
@@ -142,7 +142,7 @@ This app creates an API for a tea subscription service.
 #### Request
 `POST /api/v1/teas`
 ##### Request Body
-```
+```json
    {
       "title": "Really good tea",
       "description": "Actually it is really good",
@@ -151,7 +151,7 @@ This app creates an API for a tea subscription service.
     }
 ```
 #### Response
-```
+```json
 {
     "data": {
         "id": "4",
@@ -168,7 +168,7 @@ This app creates an API for a tea subscription service.
 #### Request
 `POST /api/v1/customers`
 ##### Request Body
-```
+```json
    {
       "first_name": "Britney",
       "last_name": "Spears",
@@ -177,7 +177,7 @@ This app creates an API for a tea subscription service.
     }
 ```
 #### Response
-```
+```json
 {
    "data": {
         "id": "4",
