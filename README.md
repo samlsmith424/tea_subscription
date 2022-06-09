@@ -2,7 +2,7 @@
 ![-----------------------------------------------------](https://raw.githubusercontent.com/andreasbm/readme/master/assets/lines/rainbow.png)
 
 #### Overview
-This app creates an API for a tea subscription service. 
+This app creates an API for a tea subscription service. There are five endpoints to create a customer, create a tea, return a list of all the customer's subscriptions, and update a customer subscription. 
 
 #### Database
 ![tea_subscription_db](https://user-images.githubusercontent.com/84606723/171562606-a4569eb4-55b5-4686-b7ca-079100fbf80c.png)
